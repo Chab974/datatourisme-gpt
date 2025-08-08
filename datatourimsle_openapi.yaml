@@ -1,10 +1,10 @@
 openapi: 3.1.1
 info:
-  title: DATAtourisme Webservice (clé en dur)
+  title: DATAtourisme Webservice (clé intégrée)
   version: "1.0"
   description: >
-    Flux touristique accessible directement avec la clé API intégrée dans l'URL.
-    Utilisation simplifiée sans configuration d'authentification dans ChatGPT.
+    Récupère un flux touristique depuis DATAtourisme avec une clé API intégrée dans l'URL.
+    Utilisation sans authentification dynamique.
 
 servers:
   - url: https://diffuseur.datatourisme.fr/webservice/8d1c63acc23712d759aa211bed76b442/4a845929-ff00-4ab0-a144-02e7eebac29b
@@ -13,14 +13,12 @@ paths:
   /:
     get:
       operationId: getTourismFlux
-      summary: Récupérer les données du flux touristique DATAtourisme
+      summary: Récupérer les données touristiques (flux JSON)
       responses:
         '200':
-          description: Réponse JSON
+          description: Données JSON retournées par le flux
           content:
             application/json:
               schema:
                 type: object
-                properties: {}  # structure minimale requise
-
-
+                properties: {}
