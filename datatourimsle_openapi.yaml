@@ -1,12 +1,7 @@
-openapi: 3.0.0
-info:
-  title: DATAtourisme API
-  version: "1.0"
-servers:
-  - url: https://diffuseur.datatourisme.fr/webservice/8d1c63acc23712d759aa211bed76b442/  # remplacez par l’URL de votre webservice
 paths:
   /webservice:
     get:
+      operationId: getFluxData  # nom unique pour cette opération
       summary: Récupérer un flux de données touristiques
       parameters:
         - in: query
