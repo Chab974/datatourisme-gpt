@@ -1,25 +1,44 @@
 openapi: 3.1.1
 info:
-  title: DATAtourisme API
+  title: DATAtourisme Webservice
   version: "1.0"
+  description: >
+    Accès au flux touristique personnalisé généré via DATAtourisme.
+    Ce webservice retourne des données au format JSON.
+
 servers:
-  - url: https://diffuseur.datatourisme.fr/webservice/8d1c63acc23712d759aa211bed76b442/  # remplacez par l’URL de votre webservice
+  - url: https://diffuseur.datatourisme.fr/webservice/8d1c63acc23712d759aa211bed76b442
+
 paths:
-  /webservice:
+  /{apiKey}:
     get:
-      operationId: getFluxData  # nom unique pour cette opération
-      summary: Récupérer un flux de données touristiques
+      operationId: getTourismFlux
+      summary: Récupérer les données du flux DATAtourisme
       parameters:
-        - in: query
+        - in: path
           name: apiKey
+          required: true
           schema:
             type: string
-          required: true
-          description: Clé API fournie par DATAtourisme
+          description: Clé API fournie par DATAtourisme (via Applications)
       responses:
         '200':
-          description: Données du flux
+          description: Réponse JSON du flux
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        address:
+                          type: string
+                        type:
+                          type: string
+
+components: {}
